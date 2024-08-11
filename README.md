@@ -3,7 +3,7 @@
 This repository contains Python scripts for detecting various geometric shapes and patterns from 2D curve data. The scripts use different algorithms and methods to identify line segments, circles, ellipses, star shapes, and symmetry in the given datasets. 
 
 ## Key Sections
-<u>1. Regularize Curves:
+** 1. Regularize Curves: **
 The goal is to identify regular shapes among a set of curves. This task is broken down into the following primitives:
 
   - Straight Lines: Detect straight line segments in the input paths.
