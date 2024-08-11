@@ -57,6 +57,7 @@ The script files are mentioned below:<br>
   - max_distance: Maximum distance between points for clustering.
   - min_samples: Minimum number of samples for clustering.
   - circle_threshold: Threshold for fitting circles.
+  - match_ratio: To detect regular circles in image, keep the parameter value as 0.2 else for the occluded circles the value should be 0.1
   - ellipse_threshold: Threshold for fitting ellipses.
 
 **3. code3_rect.py**
