@@ -68,7 +68,7 @@ The script files are mentioned below:<br>
   - Make sure to replace csv_path with the path to your CSV file.
 
 - Parameters:
-  - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter).
+  - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter). This value should be 4 optimally, increase this value if less shapes needed to be detceted while decrease this value if more shapes needed to be detecetd.
   - min_samples: The number of samples in a neighborhood for a point to be considered as a core point (DBSCAN parameter).
   - error_threshold: Maximum allowed error for fitting the Bezier curve to detect star shapes.
 
@@ -80,7 +80,7 @@ The script files are mentioned below:<br>
   - Ensure you replace csv_path with the path to your CSV file.
 
 - Parameters
-  - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter).
+  - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter). This value should be 4 optimally, increase this value if less shapes needed to be detceted while decrease this value if more shapes needed to be detecetd.
   - min_samples: The number of samples in a neighborhood for a point to be considered as a core point (DBSCAN parameter).
   - error_threshold: Maximum allowed error for fitting the Bezier curve to detect star shapes.
 
@@ -92,5 +92,5 @@ The script files are mentioned below:<br>
   - Ensure you replace csv_path with the path to your CSV file.
 
 - Parameters
-  - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter).
+  - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter). This value should be 4 optimally, increase this value if less shapes needed to be detceted while decrease this value if more shapes needed to be detecetd.
   - min_samples: The number of samples in a neighborhood for a point to be considered as a core point (DBSCAN parameter).
