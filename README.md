@@ -101,3 +101,33 @@ The script files are mentioned below:<br>
   - is_star_shape(points, num_peaks=5, curvature_threshold=0.1, error_threshold=1.0): Determines if a set of points forms a star-shaped pattern based on curvature and fitting error.
   - detect_stars(paths_XYs, eps=4, min_samples=5, min_points=20, error_threshold=1.0): Detects star-shaped patterns in the provided paths using DBSCAN clustering and the star shape detection function.
   - plot(paths_XYs, clusters=None, detected_stars=None): Visualizes the original curves, clusters, and detected star shapes.
+
+**5. code5_symmetry.py**
+-Description: This script detects symmetry axes in 2D curves by clustering points and evaluating potential symmetry lines. It utilizes DBSCAN for clustering and optimizes the maximum distance for symmetry evaluation.
+
+- Dependencies
+  - numpy
+  - matplotlib
+  - scipy
+  - sklearn
+  
+- Usage
+  - To run the script, execute the following command: python code5_symmetry.py
+  - Ensure you replace csv_path with the path to your CSV file.
+
+- Parameters
+  - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter).
+  - min_samples: The number of samples in a neighborhood for a point to be considered as a core point (DBSCAN parameter).
+  
+- Functions
+  - read_csv(csv_path): Reads the CSV file and parses the 2D curve data into a structured format.
+  - preprocess_curves(path_XYs): Flattens the nested list of curves into a single array of points.
+  - cluster_points(points, eps=5, min_samples=5): Clusters the points using DBSCAN and returns the labels.
+  - compute_centroid(points): Calculates the centroid of a set of points.
+  - generate_candidate_axes(centroid, num_axes=36):Generates candidate symmetry axes based on the centroid of the points.
+  - reflect_point(point, line_point, line_direction): Reflects a point across a line defined by a point and direction vector.
+  - evaluate_symmetry(points, line_point, line_direction, max_distance): Evaluates the symmetry of a set of points with respect to a symmetry axis.
+  - find_best_symmetry_axis(points, candidate_axes, max_distance): Finds the best symmetry axis by evaluating all candidate axes.
+  - optimize_max_distance(points, candidate_axes):Optimizes the maximum distance for evaluating symmetry using scalar optimization. 
+  - detect_symmetry_multiple(path_XYs, eps=5, min_samples=15): Detects symmetry axes for multiple clusters of points by clustering, optimizing, and evaluating symmetry. 
+  - plot_with_multiple_symmetry(path_XYs, symmetry_axes): Plots the original curves and detected symmetry axes.
