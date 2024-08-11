@@ -18,6 +18,9 @@ For closed shapes, the task is to identify the presence of symmetry, focusing in
   - Symmetry Hunt: Detecting lines of symmetry where a shape can be divided into mirrored halves.
   - Bezier Curve Fitting: Fitting Bezier curves on symmetric points to ensure a consistent representation.
 
+**3. Completing Incomplete Curves**
+The aim is to complete incomplete 2D curves that have gaps or partial holes due to planarization, where overlapping portions have been removed. The goal is to use computer vision techniques to naturally complete these curves, taking into account various levels of shape occlusion and ensuring smoothness, regularity, and symmetry in the completed curves.
+
 ## Scripts
 The script files are mentioned below:<br>
 
