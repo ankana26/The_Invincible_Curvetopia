@@ -13,6 +13,11 @@ The goal is to identify regular shapes among a set of curves. This task is broke
   - Star Shapes: Identify star shapes based on a central point with multiple radial arms.
   This activity primarily targets hand-drawn shapes and doodles. The algorithm should also be capable of distinguishing between regular and non-regular shapes.
 
+**2. Exploring Symmetry in Curves**
+For closed shapes, the task is to identify the presence of symmetry, focusing initially on reflection symmetries. This involves:
+  - Symmetry Hunt: Detecting lines of symmetry where a shape can be divided into mirrored halves.
+  - Bezier Curve Fitting: Fitting Bezier curves on symmetric points to ensure a consistent representation.
+
 ## Scripts
 The script files are mentioned below:<br>
 
