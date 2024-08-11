@@ -14,7 +14,7 @@ The goal is to identify regular shapes among a set of curves. This task is broke
   This activity primarily targets hand-drawn shapes and doodles. The algorithm should also be capable of distinguishing between regular and non-regular shapes.
 
 ## Scripts
-The script files are mentioned below:
+The script files are mentioned below:<br>
 **1. code1_line_seg.py**
   - Description: This script detects line segments in 2D curves using the Hough Line Transform. It reads curves from a CSV file, processes them to detect line segments, and plots both the original curves and the detected line segments.
 
