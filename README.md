@@ -34,3 +34,59 @@ The script files are mentioned below:<br>
   - threshold: Threshold for line detection.
   - min_line_length: Minimum length of line segments.
   - max_line_gap: Maximum allowed gap between line segments.
+
+**2. code2_circle.py**
+- Description: This script detects circles and ellipses from 2D curves using clustering and geometric fitting. It reads curves from a CSV file, fits circles and ellipses to the clustered points, and plots the detected shapes.
+
+- Dependencies:
+  - numpy
+  - matplotlib
+  - scipy
+  - sklearn
+  - opencv-python
+ 
+- Usage: 
+  - you can run the python file using: python code2_circle.py
+  - Make sure to replace csv_path with the path to your CSV file.
+ 
+- Parameters:
+  - min_points: Minimum number of points required to fit a shape.
+  - max_distance: Maximum distance between points for clustering.
+  - min_samples: Minimum number of samples for clustering.
+  - circle_threshold: Threshold for fitting circles.
+  - ellipse_threshold: Threshold for fitting ellipses.
+
+**3. code3_rect.py**
+- Description: This script detects star-shaped patterns in 2D curves by approximating them with Bezier curves and analyzing their curvature. It also uses DBSCAN for clustering.
+
+- Dependencies:
+  - numpy
+  - matplotlib
+  - scipy
+  - sklearn
+  
+- Usage:
+  - you can run the python file using: python code3_rect.py
+  - Make sure to replace csv_path with the path to your CSV file.
+
+- Parameters:
+  - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter).
+  - min_samples: The number of samples in a neighborhood for a point to be considered as a core point (DBSCAN parameter).
+  - error_threshold: Maximum allowed error for fitting the Bezier curve to detect star shapes.
+
+**4. code4_star.py**
+- Description: This script detects symmetry axes in 2D curves by clustering points and analyzing reflection symmetry. It generates candidate axes and evaluates their symmetry scores.
+
+- Dependencies:
+  - numpy
+  - matplotlib
+  - scipy
+  - sklearn
+  
+- Usage:
+  - you can run the python file using: python code4_star.py
+  - Make sure to replace csv_path with the path to your CSV file.
+
+- Parameters:
+  - eps: The maximum distance between two samples for clustering (DBSCAN parameter).
+  - min_samples: The number of samples in a neighborhood for clustering (DBSCAN parameter).
