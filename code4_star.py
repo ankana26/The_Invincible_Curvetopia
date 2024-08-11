@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.special import comb
 from sklearn.cluster import DBSCAN
 from scipy.spatial import ConvexHull
+import os
 
 def read_csv(csv_path):
     np_path_XYs = np.genfromtxt(csv_path, delimiter=',')
@@ -107,6 +108,23 @@ def plot(paths_XYs, clusters=None, detected_stars=None):
     ax.set_aspect('equal')
     plt.show()
 
+def save_detected_shapes_to_csv(detected_stars, original_file):
+    # Create the new filename
+    base_name = os.path.basename(original_file)
+    name_without_ext = os.path.splitext(base_name)[0]
+    new_filename = f"{name_without_ext}_sol.csv"
+    new_filepath = os.path.join(os.path.dirname(original_file), new_filename)
+
+    # Prepare the data for saving
+    all_points = []
+    for i, star in enumerate(detected_stars):
+        for j, point in enumerate(star):
+            all_points.append([i, j, point[0], point[1]])
+
+    # Save to CSV
+    np.savetxt(new_filepath, all_points, delimiter=',', fmt='%d,%d,%.6f,%.6f')
+    print(f"Detected shapes saved to {new_filepath}")
+
 # Main execution
 csv_path = "problems/isolated.csv"
 paths_XYs = read_csv(csv_path)
@@ -118,5 +136,6 @@ clusters, detected_stars = detect_stars(paths_XYs, error_threshold=error_thresho
 print(f"Number of clusters detected: {len(clusters)}")
 print(f"Number of stars detected: {len(detected_stars)}")
 
+save_detected_shapes_to_csv(detected_stars, csv_path)
 # Plot the results
 plot(paths_XYs, clusters, detected_stars)

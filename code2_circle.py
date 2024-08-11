@@ -4,6 +4,7 @@ from scipy.optimize import least_squares
 from sklearn.cluster import DBSCAN
 from skimage import measure
 import matplotlib.patches as mpatches
+import os
 
 def read_csv(csv_path):
     np_path_XYs = np.genfromtxt(csv_path, delimiter=',')
@@ -127,8 +128,35 @@ def is_path_matching(params, cluster_points, circle=True):
     match_ratio = np.sum(inliers) / len(cluster_points)
     return match_ratio > 0.1  # Adjust the threshold as needed
 
+def save_detected_shapes(circles, ellipses, original_file):
+    base_name = os.path.splitext(original_file)[0]
+    output_file = f"{base_name}_sol.csv"
+    
+    shapes = []
+    
+    for circle in circles:
+        xc, yc, r = circle
+        theta = np.linspace(0, 2*np.pi, 100)
+        x = xc + r * np.cos(theta)
+        y = yc + r * np.sin(theta)
+        shapes.append(np.column_stack((np.zeros(100), np.zeros(100), x, y)))
+    
+    for ellipse in ellipses:
+        xc, yc, a, b, theta = ellipse
+        t = np.linspace(0, 2*np.pi, 100)
+        x = xc + a * np.cos(t) * np.cos(theta) - b * np.sin(t) * np.sin(theta)
+        y = yc + a * np.cos(t) * np.sin(theta) + b * np.sin(t) * np.cos(theta)
+        shapes.append(np.column_stack((np.zeros(100), np.zeros(100), x, y)))
+    
+    if shapes:
+        all_shapes = np.vstack(shapes)
+        np.savetxt(output_file, all_shapes, delimiter=',')
+        print(f"Saved detected shapes to {output_file}")
+    else:
+        print("No shapes detected to save.")
+
 # Main execution
-csv_path = 'problems/frag2.csv'
+csv_path = 'problems/frag0.csv'
 path_XYs = read_csv(csv_path)
 
 # Detect shapes
@@ -138,3 +166,5 @@ circles, ellipses = detect_shapes(path_XYs)
 plot(path_XYs, circles, ellipses)
 
 print(f"Detected {len(circles)} circles and {len(ellipses)} ellipses.")
+
+save_detected_shapes(circles, ellipses, csv_path)

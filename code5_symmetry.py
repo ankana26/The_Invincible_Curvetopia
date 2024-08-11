@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 from scipy.optimize import minimize_scalar
 from sklearn.cluster import DBSCAN
+import os
 
 def read_csv(csv_path):
     np_path_XYs = np.genfromtxt(csv_path, delimiter=',')
@@ -105,6 +106,33 @@ def plot_with_multiple_symmetry(path_XYs, symmetry_axes):
     ax.legend()
     plt.show()
 
+def save_detected_shapes(path_XYs, labels, original_file):
+    base_name = os.path.splitext(os.path.basename(original_file))[0]
+    output_file = f"{base_name}_sol.csv"
+    output_path = os.path.join(os.path.dirname(original_file), output_file)
+
+    all_points = np.vstack([XY for XYs in path_XYs for XY in XYs])
+    
+    with open(output_path, 'w') as f:
+        # Write original shapes
+        for i, XYs in enumerate(path_XYs):
+            for j, XY in enumerate(XYs):
+                for k, point in enumerate(XY):
+                    f.write(f"original,{i},{j},{k},{point[0]},{point[1]}\n")
+        
+        # Write detected shapes
+        label_index = 0
+        for label in np.unique(labels):
+            if label == -1:  # Skip noise points
+                continue
+            shape_points = all_points[labels == label]
+            if len(shape_points) > 0:
+                for k, point in enumerate(shape_points):
+                    f.write(f"detected,{label_index},{k},{point[0]},{point[1]}\n")
+                label_index += 1
+
+    print(f"Original and detected shapes saved to: {output_path}")
+
 # Main execution
 if __name__ == "__main__":
     csv_path = 'problems/isolated.csv'  # Replace with your actual CSV file path
@@ -116,6 +144,8 @@ if __name__ == "__main__":
     
     symmetry_axes = detect_symmetry_multiple(path_XYs, eps, min_samples)
     
+    points = preprocess_curves(path_XYs)
+    labels = cluster_points(points, eps, min_samples)
     if not symmetry_axes:
         print("No symmetry axes detected. Try adjusting the clustering parameters.")
     else:
@@ -125,3 +155,6 @@ if __name__ == "__main__":
             print(f"  Max distance: {max_distance:.2f}")
         
         plot_with_multiple_symmetry(path_XYs, symmetry_axes)
+
+    
+    save_detected_shapes(path_XYs, labels, csv_path)

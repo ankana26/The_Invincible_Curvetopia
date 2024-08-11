@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from collections import Counter
@@ -107,6 +108,27 @@ def detect_shapes(img, min_contour_area=100):
     
     return detected_shapes
 
+def save_detected_shapes(detected_shapes, original_csv_path):
+    base_name = os.path.basename(original_csv_path)
+    dir_name = os.path.dirname(original_csv_path)
+    sol_csv_path = os.path.join(dir_name, f"{os.path.splitext(base_name)[0]}_sol.csv")
+    
+    all_points = []
+    for i, (shape, contour) in enumerate(detected_shapes):
+        shape_points = np.column_stack((
+            np.full(len(contour), i),  # Shape index
+            np.zeros(len(contour)),    # Path index (always 0 for single-path shapes)
+            contour
+        ))
+        all_points.append(shape_points)
+    
+    if all_points:
+        all_points = np.vstack(all_points)
+        np.savetxt(sol_csv_path, all_points, delimiter=',', fmt='%.6f')
+        print(f"Detected shapes saved to {sol_csv_path}")
+    else:
+        print("No shapes detected to save.")
+
 # Main execution
 csv_path = 'problems/isolated.csv'
 paths_XYs = read_csv(csv_path)
@@ -116,6 +138,7 @@ img = preprocess_curves(paths_XYs)
 
 # Detect shapes in the binary image
 detected_shapes = detect_shapes(img)
+save_detected_shapes(detected_shapes, csv_path)
 
 # Plot the original curves and the detected shapes
 plot(paths_XYs, detected_shapes)

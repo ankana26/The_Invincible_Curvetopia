@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
+import os
 
 def read_csv(csv_path):
     np_path_XYs = np.genfromtxt(csv_path, delimiter=',')
@@ -65,6 +66,23 @@ def detect_line_segments(path_XYs, rho, theta, threshold, min_line_length, max_l
 
     return lines
 
+def save_detected_shapes_to_csv(segments, original_csv_path):
+    # Create the new filename
+    base_name = os.path.basename(original_csv_path)
+    name_without_ext = os.path.splitext(base_name)[0]
+    new_csv_path = f"{name_without_ext}_sol.csv"
+    
+    # Prepare the data
+    data = []
+    for i, line in enumerate(segments):
+        x1, y1, x2, y2 = line[0]
+        data.append([i, 0, x1, y1])
+        data.append([i, 0, x2, y2])
+    
+    # Save to CSV
+    np.savetxt(new_csv_path, data, delimiter=',', fmt='%d,%d,%.6f,%.6f')
+    print(f"Detected shapes saved to: {new_csv_path}")
+
 def main(csv_path):
     path_XYs = read_csv(csv_path)
 
@@ -87,7 +105,7 @@ def main(csv_path):
         print("No line segments detected. Try adjusting the parameters.")
     else:
         print(f"Number of line segments detected: {len(segments)}")
-        
+        save_detected_shapes_to_csv(segments, csv_path)
         # user_input = input("Enter new parameters (rho,theta,threshold,min_line_length,max_line_gap) or 'q' to quit: ")
         
         # if user_input.lower() == 'q':
@@ -99,5 +117,5 @@ def main(csv_path):
         #     print("Invalid input. Please try again.")
 
 if __name__ == "__main__":
-    csv_path = "Codes/problems/occlusion2.csv"  # Replace with your CSV file path
+    csv_path = "problems/frag2.csv"  # Replace with your CSV file path
     main(csv_path)
