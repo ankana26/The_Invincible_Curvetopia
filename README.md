@@ -45,6 +45,9 @@ The script files are mentioned below:<br>
   - min_line_length: Minimum length of line segments.
   - max_line_gap: Maximum allowed gap between line segments.
  
+- Solutions:
+  This is the obtained solution plot for line segment detection:
+  ![unnamed](https://github.com/user-attachments/assets/ced307a4-d090-4c10-ab55-8ec85b60981f)
 
 **2. code2_circle.py**
 - Description: This script detects circles and ellipses from 2D curves using clustering and geometric fitting. It reads curves from a CSV file, fits circles and ellipses to the clustered points, and plots the detected shapes.
@@ -61,6 +64,10 @@ The script files are mentioned below:<br>
   - match_ratio: To detect regular circles in image, keep the parameter value as 0.2 else for the occluded circles the value should be 0.1
   - ellipse_threshold: Threshold for fitting ellipses.
 
+ - Solutions:
+  This is the obtained solution plot for circle detection:
+![unnamed](https://github.com/user-attachments/assets/aa60f7f1-b502-4566-bb7e-6413821ac180)
+
 **3. code3_rect.py**
 - Description: This script detects star-shaped patterns in 2D curves by approximating them with Bezier curves and analyzing their curvature. It also uses DBSCAN for clustering.
   
@@ -72,6 +79,10 @@ The script files are mentioned below:<br>
   - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter). This value should be 4 optimally, increase this value if less shapes needed to be detceted while decrease this value if more shapes needed to be detecetd.
   - min_samples: The number of samples in a neighborhood for a point to be considered as a core point (DBSCAN parameter).
   - error_threshold: Maximum allowed error for fitting the Bezier curve to detect star shapes.
+
+ - Solutions:
+  This is the obtained solution plot for rectangle detection:
+![unnamed](https://github.com/user-attachments/assets/17f5ee51-e9aa-432e-a685-b74322ac68bc)
 
 **4. code4_star.py**
 -Description: This script detects star-shaped patterns in 2D curves by approximating them with Bezier curves and analyzing their curvature. It also utilizes DBSCAN clustering to group points.
@@ -100,3 +111,8 @@ The script files are mentioned below:<br>
 - Parameters
   - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter). This value should be 4 optimally, increase this value if less shapes needed to be detceted while decrease this value if more shapes needed to be detecetd.
   - min_samples: The number of samples in a neighborhood for a point to be considered as a core point (DBSCAN parameter).
+ 
+- Solutions:
+  This is the obtained solution plot for symmetry detection:
+  ![unnamed](https://github.com/user-attachments/assets/1f2a28c2-2291-4088-a268-0ea983bc2e2f)
+
