@@ -44,6 +44,7 @@ The script files are mentioned below:<br>
   - threshold: Threshold for line detection.
   - min_line_length: Minimum length of line segments.
   - max_line_gap: Maximum allowed gap between line segments.
+ 
 
 **2. code2_circle.py**
 - Description: This script detects circles and ellipses from 2D curves using clustering and geometric fitting. It reads curves from a CSV file, fits circles and ellipses to the clustered points, and plots the detected shapes.
@@ -83,6 +84,11 @@ The script files are mentioned below:<br>
   - eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other (DBSCAN parameter). This value should be 4 optimally, increase this value if less shapes needed to be detceted while decrease this value if more shapes needed to be detecetd.
   - min_samples: The number of samples in a neighborhood for a point to be considered as a core point (DBSCAN parameter).
   - error_threshold: Maximum allowed error for fitting the Bezier curve to detect star shapes.
+
+- Solutions:
+  This is the obtained solution plot for star detection:
+   ![unnamed](https://github.com/user-attachments/assets/0f11a489-0156-47c2-aa59-a44d6b0e2492)
+
 
 **5. code5_symmetry.py**
 -Description: This script detects symmetry axes in 2D curves by clustering points and evaluating potential symmetry lines. It utilizes DBSCAN for clustering and optimizes the maximum distance for symmetry evaluation.
