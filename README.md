@@ -16,13 +16,15 @@ The goal is to identify regular shapes among a set of curves. This task is broke
 ## Scripts
 The script files are mentioned below:<br>
 
+**Dependencies**
+- numpy
+- matplotlib
+- scipy
+- sklearn
+- opencv-python
+
 **1. code1_line_seg.py**
   - Description: This script detects line segments in 2D curves using the Hough Line Transform. It reads curves from a CSV file, processes them to detect line segments, and plots both the original curves and the detected line segments.
-
-- Dependencies:
-  - numpy
-  - matplotlib
-  - opencv-python
     
 - Usage:
   - you can run the python file using: python code1_line_seg.py
@@ -37,13 +39,6 @@ The script files are mentioned below:<br>
 
 **2. code2_circle.py**
 - Description: This script detects circles and ellipses from 2D curves using clustering and geometric fitting. It reads curves from a CSV file, fits circles and ellipses to the clustered points, and plots the detected shapes.
-
-- Dependencies:
-  - numpy
-  - matplotlib
-  - scipy
-  - sklearn
-  - opencv-python
  
 - Usage: 
   - you can run the python file using: python code2_circle.py
@@ -58,12 +53,6 @@ The script files are mentioned below:<br>
 
 **3. code3_rect.py**
 - Description: This script detects star-shaped patterns in 2D curves by approximating them with Bezier curves and analyzing their curvature. It also uses DBSCAN for clustering.
-
-- Dependencies:
-  - numpy
-  - matplotlib
-  - scipy
-  - sklearn
   
 - Usage:
   - you can run the python file using: python code3_rect.py
@@ -76,12 +65,6 @@ The script files are mentioned below:<br>
 
 **4. code4_star.py**
 -Description: This script detects star-shaped patterns in 2D curves by approximating them with Bezier curves and analyzing their curvature. It also utilizes DBSCAN clustering to group points.
-
-- Dependencies
-  - numpy
-  - matplotlib
-  - scipy
-  - sklearn
 
 - Usage
   - To run the script, execute the following command: python code3_rect.py
@@ -104,12 +87,6 @@ The script files are mentioned below:<br>
 
 **5. code5_symmetry.py**
 -Description: This script detects symmetry axes in 2D curves by clustering points and evaluating potential symmetry lines. It utilizes DBSCAN for clustering and optimizes the maximum distance for symmetry evaluation.
-
-- Dependencies
-  - numpy
-  - matplotlib
-  - scipy
-  - sklearn
   
 - Usage
   - To run the script, execute the following command: python code5_symmetry.py
